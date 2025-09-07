@@ -7,19 +7,19 @@ public class Bank {
     public static List<BankAccount> accounts = new ArrayList<>();
 
 
-    public void addNewClient()
+    public void addNewClient(Client client)
     {
-
+          this.clients.add(client);
     }
 
 
     // adds the user to database
-    public void asignBankAccount()
+    public void asignBankAccount(BankAccount bankAccount)
     {
-
+       this.accounts.add(bankAccount) ;
     }
 
-    // returns the bankaccount insrance
+    // returns the bank account instance
     public BankAccount openAccount(Client client, double balance) throws Exception
     {
 

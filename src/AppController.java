@@ -1,6 +1,57 @@
-public class AppController 
+import java.io.BufferedReader;
+import java.util.Scanner;
+
+public  class AppController
 {
-    public void menu()
+
+
+    public static void router(int option) throws Exception{
+        switch (option){
+            // create a CLIENT request
+            case 1 :
+                System.out.println("CREATE A CLIENT");
+                break;
+
+
+            // create a BANK ACCOUNT request
+            case 2 :
+                System.out.println("CREATE A BANK ACCOUNT");
+                break;
+            // create a BANK ACCOUNT request
+            case 3 :
+                System.out.println("VIEW ALL CLIENTS");
+                break;
+
+            default:
+                throw  new Exception(" please choose a valid option !!");
+        }
+    }
+
+    public static int startProgram(){
+        int option = -1 ;
+        Scanner sc = new Scanner(System.in);
+        // show menu
+        AppController.menu();
+        while(true){
+            System.out.print("type an option : ");
+            String iput = sc.nextLine();
+
+            try{
+               option =  Integer.parseInt(iput) ;
+            }catch(Exception e){
+                continue;
+            }
+            if(option == 1){
+                break;
+            }
+        }
+        return  option ;
+
+    }
+
+
+
+    public static void menu()
     {
         System.out.println("=== Welcome to Simple Bank System ===");
         System.out.println("Please choose an option:");
@@ -18,16 +69,14 @@ public class AppController
 
 
 
-    public int userOption(int option)
+
+    public static boolean checkIfExit(String email)
     {
-        if (option < 1 || option > 9) throw new  IllegalArgumentException("the option selected is not correct ");
-
-        return option;
-
+        boolean isExist = Bank.clients.stream().anyMatch((client ) -> client.email.equals(email) );
+        return isExist ;
     }
 
-
-    public boolean middleWare(int option)
+    public static boolean middleWare(int option)
     {
         if (option == 1) return true;
 

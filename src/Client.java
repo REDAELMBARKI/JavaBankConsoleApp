@@ -5,16 +5,21 @@ public class Client {
     private static int Id = 0;
     private int id;
     protected String fullName;
+    protected String email;
+    private String password;
     private BankAccount account;
     protected int age;
 
-    public Client(String fullName, int age) {
+    // constructor
+    public Client(String fullName, int age , String email, String password) {
         if (age < 18) {
             throw new IllegalArgumentException("The age must be at least 18");
         }
         Id++;
         this.id = Id;
         this.fullName = fullName;
+        this.email = email;
+        this.password = password;
         this.age = age;
     }
 
@@ -59,6 +64,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return "client id: " + id + " fullName: " + fullName;
+        return "client id: " + id + " fullName: " + fullName + " email: " + email + " age: " + age;
     }
 }
