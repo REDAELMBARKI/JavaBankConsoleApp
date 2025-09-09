@@ -1,30 +1,44 @@
 import java.util.ArrayList;
 import java.util.List ;
+import java.util.Scanner;
 
-public class Bank {
-
-    public static List<Client> clients  = new ArrayList<>();
-    public static List<BankAccount> accounts = new ArrayList<>();
+public abstract class Bank {
 
 
-    public void addNewClient(Client client)
-    {
-          this.clients.add(client);
+   public String name ;
+   public Double additions;
+
+   public Bank(String name , double additions ){
+       this.name = name;
+       this.additions = additions;
+   }
+
+   public String getName(){
+       return this.name;
+   }
+
+    public String setName(String name){
+        this.name = name ;
+    }
+
+    // handleClientCreation
+    public static void  handleClientCreation(){
+         // get an  email exist
+        String email = "" ;
+        System.out.println("enter the client email :");
+        boolean isValidEmail = false ;
+
+        while(! isValidEmail){
+
+            email = Bank.input.next() ;
+
+            if(! email.equals("") && email.contains("@") && email.contains(".") ){
+                isValidEmail = true;
+            }
+        }
+
     }
 
 
-    // adds the user to database
-    public void asignBankAccount(BankAccount bankAccount)
-    {
-       this.accounts.add(bankAccount) ;
-    }
 
-    // returns the bank account instance
-    public BankAccount openAccount(Client client, double balance) throws Exception
-    {
-
-        if (client == null ) throw new Exception("Cant create an account with no client ");
-        if (balance < 100 ) throw new Exception("ony amounts higher then 100 DH are allowed ");
-        return  new BankAccount(client, balance);
-    }
 }

@@ -23,10 +23,6 @@ public class Client {
         this.age = age;
     }
 
-    // --- Account ---
-    public void addAccount(BankAccount bankAccount) {
-        this.account = bankAccount;
-    }
 
     public BankAccount getAccount() {
         return account;

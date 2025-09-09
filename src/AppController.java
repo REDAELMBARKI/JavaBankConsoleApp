@@ -9,15 +9,15 @@ public  class AppController
         switch (option){
             // create a CLIENT request
             case 1 :
-                System.out.println("CREATE A CLIENT");
+                Bank.handleClientCreation() ;
                 break;
 
 
             // create a BANK ACCOUNT request
             case 2 :
-                System.out.println("CREATE A BANK ACCOUNT");
+                Bank.handleAccountCreation() ;
                 break;
-            // create a BANK ACCOUNT request
+            // create a View All Clients request
             case 3 :
                 System.out.println("VIEW ALL CLIENTS");
                 break;
@@ -32,7 +32,7 @@ public  class AppController
         Scanner sc = new Scanner(System.in);
         // show menu
         AppController.menu();
-        while(true){
+        while(option < 1 || option > 9){
             System.out.print("type an option : ");
             String iput = sc.nextLine();
 
@@ -41,9 +41,7 @@ public  class AppController
             }catch(Exception e){
                 continue;
             }
-            if(option == 1){
-                break;
-            }
+
         }
         return  option ;
 
@@ -70,11 +68,7 @@ public  class AppController
 
 
 
-    public static boolean checkIfExit(String email)
-    {
-        boolean isExist = Bank.clients.stream().anyMatch((client ) -> client.email.equals(email) );
-        return isExist ;
-    }
+
 
     public static boolean middleWare(int option)
     {
